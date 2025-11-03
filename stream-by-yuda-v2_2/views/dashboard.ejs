@@ -1,0 +1,28 @@
+<% layout('layout', { title: 'Stream by Yuda', session }) -%>
+<a href="/add" class="bg-green-600 px-3 py-1 rounded">+ Tambah Jadwal</a>
+<div class="grid grid-cols-3 gap-3 mt-4">
+  <div class="bg-gray-800 p-3 rounded">🎥 Live: <%= stats.live %></div>
+  <div class="bg-gray-800 p-3 rounded">📅 Scheduled: <%= stats.scheduled %></div>
+  <div class="bg-gray-800 p-3 rounded">👁️ Viewers: <%= stats.totalViewers %></div>
+</div>
+<table class="w-full mt-6 text-sm">
+  <tr class="bg-gray-700">
+    <th>Nama</th><th>Status</th><th>Start</th><th>End</th><th>Viewers</th><th>Aksi</th>
+  </tr>
+  <% streams.forEach(s=>{ %>
+    <tr class="<%= s.status==='Live'?'bg-green-900':'' %> border-b border-gray-700">
+      <td class="p-2"><%= s.name %></td>
+      <td><%= s.status %></td>
+      <td><%= s.start %></td>
+      <td><%= s.end %></td>
+      <td><%= s.viewers %></td>
+      <td>
+        <% if(s.status==='Scheduled'){ %>
+          <a href="/start/<%= s.id %>" class="text-green-400">Start</a>
+        <% } else if (s.status && s.status.startsWith('Live')) { %>
+          <a href="/stop/<%= s.id %>" class="text-red-400">Stop</a>
+        <% } %>
+      </td>
+    </tr>
+  <% }) %>
+</table>

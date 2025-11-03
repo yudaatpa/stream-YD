@@ -1,0 +1,15 @@
+<% layout('layout', { title: 'Tambah Jadwal', session }) -%>
+<form method="post" class="space-y-2 max-w-xl">
+  <input name="name" placeholder="Nama Stream" class="w-full bg-gray-800 p-2 rounded">
+  <input name="server" value="rtmp://a.rtmp.youtube.com/live2" class="w-full bg-gray-800 p-2 rounded">
+  <input name="key" placeholder="Stream Key" class="w-full bg-gray-800 p-2 rounded">
+  <input name="file" placeholder="/path/video.mp4" class="w-full bg-gray-800 p-2 rounded">
+  <input name="watch_url" placeholder="Watch URL (opsional)" class="w-full bg-gray-800 p-2 rounded">
+  <label class="block">Mulai <input type="datetime-local" name="start" class="bg-gray-800 p-1 rounded"></label>
+  <label class="block">Selesai <input type="datetime-local" name="end" class="bg-gray-800 p-1 rounded"></label>
+  <label class="block">Auto-Stop (jam) <input type="number" name="autostop_h" value="5" class="bg-gray-800 w-24 p-1 rounded"></label>
+  <label class="block"><input type="checkbox" name="keepalive" checked> KeepAlive</label>
+  <label class="block">Grace (menit) <input type="number" name="grace_min" value="10" class="bg-gray-800 w-24 p-1 rounded"></label>
+  <label class="block">Max Over (jam) <input type="number" name="max_h" value="12" class="bg-gray-800 w-24 p-1 rounded"></label>
+  <button class="bg-green-600 px-3 py-1 rounded">Simpan</button>
+</form>
